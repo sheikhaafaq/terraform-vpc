@@ -68,12 +68,20 @@ resource "aws_subnet" "private-subnet" {
 #------------------->> ELASTIC IP <<------------
 resource "aws_eip" "elastic-ip-1" {
     vpc                      = true
+    tags                      = {
+    Name            = "${var.vpc_name}-elastic-ip"
+    Company         = "${lower(var.company)}"
+  }  
 }
 
 #---------------->> NAT GATEWAY <<---------------------
 resource "aws_nat_gateway" "nat-gateway-1" {
     allocation_id           = aws_eip.elastic-ip-1.id
     subnet_id               = aws_subnet.public-subnet[0].id 
+    tags                      = {
+    Name            = "${var.vpc_name}-nat-gateways"
+    Company         = "${lower(var.company)}"
+  }
 }
 
 
