@@ -1,0 +1,8 @@
+*.tfstate
+*.tfplan
+*.backup
+*.bkp
+*.hcl
+*.AFTER_LAUNCH
+provider-credentials.tfvars
+.terraform/
